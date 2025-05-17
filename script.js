@@ -1,74 +1,47 @@
-let notesData = {};
-let currentSubject = "";
-let filteredTopics = [];
+document.addEventListener("DOMContentLoaded", function () {
+  const topicContainer = document.getElementById("topic-container");
+  const noteContent = document.getElementById("note-content");
+  const searchInput = document.getElementById("search-input");
 
-fetch('data/notes.json')
-  .then(res => res.json())
-  .then(data => notesData = data)
-  .catch(err => {
-    console.error('Error loading notes:', err);
-    document.getElementById('note-content').textContent = 'Failed to load notes.';
+  fetch("notes.json")
+    .then((response) => response.json())
+    .then((data) => {
+      topicContainer.innerHTML = "";
+      if (data && data.notes && data.notes.length) {
+        data.notes.forEach((note, index) => {
+          const div = document.createElement("div");
+          div.className = "topic-item";
+          div.textContent = `${index + 1}. ${note.title}`;
+          div.addEventListener("click", () => {
+            noteContent.classList.remove("hidden");
+            noteContent.innerHTML = `<h3>${note.title}</h3><p>${note.content}</p>`;
+          });
+          topicContainer.appendChild(div);
+        });
+      } else {
+        topicContainer.innerHTML = "<p>No notes available.</p>";
+      }
+    })
+    .catch((error) => {
+      console.error("Error loading JSON:", error);
+      topicContainer.innerHTML = "<p>Failed to load notes.</p>";
+    });
+
+  searchInput.addEventListener("input", function () {
+    const searchValue = this.value.toLowerCase();
+    const topicItems = document.querySelectorAll(".topic-item");
+    topicItems.forEach((item) => {
+      const text = item.textContent.toLowerCase();
+      item.style.display = text.includes(searchValue) ? "block" : "none";
+    });
   });
 
-function loadSubject(subject) {
-  currentSubject = subject;
-  const title = document.getElementById('subject-title');
-  const container = document.getElementById('topic-container');
-  const noteContent = document.getElementById('note-content');
-  const searchBox = document.getElementById('search-box');
-
-  // Reset and show
-  title.textContent = subject;
-  document.getElementById('back-button').classList.add('hidden');
-  noteContent.classList.add('hidden');
-  container.innerHTML = '';
-  searchBox.classList.remove('hidden');
-  document.getElementById('bottom-nav').classList.remove('hidden');
-
-  // Highlight selected button
-  document.querySelectorAll('#bottom-nav button').forEach(btn => {
-    btn.classList.remove('active');
-  });
-  document.getElementById(`btn-${subject}`).classList.add('active');
-
-  filteredTopics = notesData[subject] || [];
-  renderTopics();
-}
-
-function renderTopics() {
-  const container = document.getElementById('topic-container');
-  container.innerHTML = '';
-
-  filteredTopics.forEach(topic => {
-    const div = document.createElement('div');
-    div.className = 'topic-item';
-    div.textContent = topic.title;
-    div.onclick = () => {
-      container.innerHTML = '';
-      document.getElementById('note-content').classList.remove('hidden');
-      document.getElementById('note-content').textContent = topic.content;
-      document.getElementById('search-box').classList.add('hidden');
-      document.getElementById('bottom-nav').classList.add('hidden');
-      document.getElementById('back-button').classList.remove('hidden');
-      document.getElementById('subject-title').textContent = `${currentSubject} > ${topic.title}`;
-    };
-    container.appendChild(div);
+  // Navigation buttons
+  document.getElementById("advanced-btn").addEventListener("click", () => {
+    window.location.href = "https://imrutunjaya.github.io/Prototype3/";
   });
 
-  if (filteredTopics.length === 0) {
-    container.innerHTML = "<p>No topics found.</p>";
-  }
-}
-
-function filterTopics() {
-  const input = document.getElementById('search-input').value.toLowerCase();
-  const allTopics = notesData[currentSubject] || [];
-  filteredTopics = allTopics.filter(topic =>
-    topic.title.toLowerCase().includes(input)
-  );
-  renderTopics();
-}
-
-function goBack() {
-  loadSubject(currentSubject);
-}
+  document.getElementById("annotation-btn").addEventListener("click", () => {
+    window.location.href = "https://imrutunjaya.github.io/notes/";
+  });
+});
