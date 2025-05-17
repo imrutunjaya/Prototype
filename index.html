@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Study Notes</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
   <header id="topbar">
+    <span id="back-button" onclick="goBack()" class="hidden">&#8592;</span>
     <h1 id="subject-title">Study Notes</h1>
   </header>
 
@@ -20,11 +21,11 @@
   </main>
 
   <nav id="bottom-nav">
-    <button onclick="loadSubject('Maths')">Maths</button>
-    <button onclick="loadSubject('Current Affairs')">Current Affairs</button>
-    <button onclick="loadSubject('English')">English</button>
-    <button onclick="loadSubject('Computer')">Computer</button>
-    <button onclick="loadSubject('Tips & Tricks')">Tips & Tricks</button>
+    <button onclick="loadSubject('Maths')" id="btn-Maths">Maths</button>
+    <button onclick="loadSubject('Current Affairs')" id="btn-Current Affairs">Current Affairs</button>
+    <button onclick="loadSubject('English')" id="btn-English">English</button>
+    <button onclick="loadSubject('Computer')" id="btn-Computer">Computer</button>
+    <button onclick="loadSubject('Tips & Tricks')" id="btn-Tips & Tricks">Tips & Tricks</button>
   </nav>
 
   <script src="script.js"></script>
