@@ -11,15 +11,24 @@ header#topbar {
   background-color: white;
   padding: 16px;
   border-bottom: 1px solid #ccc;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   position: sticky;
   top: 0;
   z-index: 2;
 }
 
 #subject-title {
+  font-weight: 400;
+  font-size: 18px;
+  color: #333;
   margin: 0;
-  font-size: 22px;
+}
+
+#back-button {
+  font-size: 20px;
+  cursor: pointer;
   color: #333;
 }
 
@@ -89,10 +98,18 @@ main {
 }
 
 #bottom-nav button {
-  background: none;
+  background-color: #f0f0f0;
   border: none;
   color: #333;
-  font-size: 15px;
-  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
+  transition: 0.2s ease;
+}
+
+#bottom-nav button.active {
+  background-color: black;
+  color: white;
 }
