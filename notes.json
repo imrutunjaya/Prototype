@@ -1,0 +1,36 @@
+{
+  "Maths": [
+    {
+      "title": "Algebra Basics",
+      "content": "Algebra involves symbols and equations. Example: x + 2 = 5"
+    },
+    {
+      "title": "Geometry Intro",
+      "content": "Geometry deals with shapes, angles, and measurements."
+    }
+  ],
+  "Current Affairs": [
+    {
+      "title": "Budget 2025 Highlights",
+      "content": "Key highlights include tax reforms and healthcare spending."
+    }
+  ],
+  "English": [
+    {
+      "title": "Tenses Overview",
+      "content": "Past, Present, and Future tenses describe time of action."
+    }
+  ],
+  "Computer": [
+    {
+      "title": "What is a CPU?",
+      "content": "CPU stands for Central Processing Unit, the brain of the computer."
+    }
+  ],
+  "Tips & Tricks": [
+    {
+      "title": "Study Planning",
+      "content": "Use Pomodoro technique: 25 mins focus, 5 mins break."
+    }
+  ]
+}
