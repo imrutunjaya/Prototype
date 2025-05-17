@@ -17,13 +17,21 @@ function loadSubject(subject) {
   const noteContent = document.getElementById('note-content');
   const searchBox = document.getElementById('search-box');
 
+  // Reset and show
   title.textContent = subject;
+  document.getElementById('back-button').classList.add('hidden');
   noteContent.classList.add('hidden');
-  searchBox.classList.remove('hidden');
   container.innerHTML = '';
+  searchBox.classList.remove('hidden');
+  document.getElementById('bottom-nav').classList.remove('hidden');
+
+  // Highlight selected button
+  document.querySelectorAll('#bottom-nav button').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  document.getElementById(`btn-${subject}`).classList.add('active');
 
   filteredTopics = notesData[subject] || [];
-
   renderTopics();
 }
 
@@ -40,6 +48,9 @@ function renderTopics() {
       document.getElementById('note-content').classList.remove('hidden');
       document.getElementById('note-content').textContent = topic.content;
       document.getElementById('search-box').classList.add('hidden');
+      document.getElementById('bottom-nav').classList.add('hidden');
+      document.getElementById('back-button').classList.remove('hidden');
+      document.getElementById('subject-title').textContent = `${currentSubject} > ${topic.title}`;
     };
     container.appendChild(div);
   });
@@ -56,4 +67,8 @@ function filterTopics() {
     topic.title.toLowerCase().includes(input)
   );
   renderTopics();
+}
+
+function goBack() {
+  loadSubject(currentSubject);
 }
