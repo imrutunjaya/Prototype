@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Study Notes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="topbar">
+    <h1 id="subject-title">Select a Subject</h1>
+    <ul id="topic-list"></ul>
+  </header>
+
+  <main>
+    <div id="note-content">Please select a topic to view notes.</div>
+  </main>
+
+  <nav id="bottom-nav">
+    <button onclick="loadSubject('Maths')">Maths</button>
+    <button onclick="loadSubject('Current Affairs')">Current Affairs</button>
+    <button onclick="loadSubject('English')">English</button>
+    <button onclick="loadSubject('Computer')">Computer</button>
+    <button onclick="loadSubject('Tips & Tricks')">Tips & Tricks</button>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+</html>
