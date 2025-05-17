@@ -20,10 +20,10 @@ header#topbar {
 }
 
 #subject-title {
-  font-weight: 400;
+  font-weight: 300;
   font-size: 18px;
   color: #333;
-  margin: 0;
+  margin: auto;
 }
 
 #back-button {
